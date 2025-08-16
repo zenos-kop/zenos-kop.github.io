@@ -1,0 +1,112 @@
+[
+  {
+    "id": 101,
+    "name": "Handsocks Manset Jempol Muslimah",
+    "price": 15000,
+    "category": "Fashion Muslim",
+    "promo": true,
+    "discount": 10,
+    "rating": 4.5,
+    "image": "handsock.jpg",
+    "source": "sarqu.id (seed)"
+  },
+  {
+    "id": 102,
+    "name": "Ciput Rajut Antislip",
+    "price": 12000,
+    "category": "Fashion Muslim",
+    "promo": false,
+    "discount": 0,
+    "rating": 4.6,
+    "image": "ciput.jpg",
+    "source": "sarqu.id (seed)"
+  },
+  {
+    "id": 103,
+    "name": "Kerudung Pashmina Plisket",
+    "price": 29000,
+    "category": "Hijab",
+    "promo": true,
+    "discount": 20,
+    "rating": 4.7,
+    "image": "pashmina.jpg",
+    "source": "sarqu.id (seed)"
+  },
+  {
+    "id": 104,
+    "name": "Kaos Kaki Muslimah Panjang",
+    "price": 10000,
+    "category": "Kaos Kaki",
+    "promo": false,
+    "discount": 0,
+    "rating": 4.3,
+    "image": "kaoskaki.jpg",
+    "source": "sarqu.id (seed)"
+  },
+  {
+    "id": 105,
+    "name": "Inner Ninja Hijab",
+    "price": 25000,
+    "category": "Hijab",
+    "promo": true,
+    "discount": 15,
+    "rating": 4.4,
+    "image": "innerninja.jpg",
+    "source": "sarqu.id (seed)"
+  },
+  {
+    "id": 106,
+    "name": "Manset Kaos Lengan Panjang",
+    "price": 35000,
+    "category": "Fashion Muslim",
+    "promo": true,
+    "discount": 10,
+    "rating": 4.5,
+    "image": "manset.jpg",
+    "source": "sarqu.id (seed)"
+  },
+  {
+    "id": 107,
+    "name": "Jarum Pentul Premium 40 pcs",
+    "price": 9000,
+    "category": "Aksesoris",
+    "promo": false,
+    "discount": 0,
+    "rating": 4.2,
+    "image": "jarumpentul.jpg",
+    "source": "sarqu.id (seed)"
+  },
+  {
+    "id": 108,
+    "name": "Headband Antislip Hijab",
+    "price": 14000,
+    "category": "Aksesoris",
+    "promo": true,
+    "discount": 5,
+    "rating": 4.1,
+    "image": "headband.jpg",
+    "source": "sarqu.id (seed)"
+  },
+  {
+    "id": 109,
+    "name": "Bros Hijab Bunga",
+    "price": 12000,
+    "category": "Aksesoris",
+    "promo": false,
+    "discount": 0,
+    "rating": 4.0,
+    "image": "bros.jpg",
+    "source": "sarqu.id (seed)"
+  },
+  {
+    "id": 110,
+    "name": "Pita Scrunchie Satin",
+    "price": 16000,
+    "category": "Aksesoris",
+    "promo": true,
+    "discount": 10,
+    "rating": 4.3,
+    "image": "scrunchie.jpg",
+    "source": "sarqu.id (seed)"
+  }
+]

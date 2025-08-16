@@ -1,0 +1,11 @@
+
+:root { --brand: #ff4d4f; }
+body { font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+.bg-body { background: #f8f9fb; }
+.card-product:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,.08); }
+.badge-promo { background: var(--brand); }
+.rating { font-size: .9rem; }
+[data-theme="dark"] body { background: #0f1114; color: #e7e9ec; }
+[data-theme="dark"] .navbar, [data-theme="dark"] footer, [data-theme="dark"] .card { background:#121418; color:#e7e9ec; }
+[data-theme="dark"] .border-bottom, [data-theme="dark"] .border-top { border-color:#22262e!important; }
+.placeholder-img { background: linear-gradient(135deg, #f1f3f5, #e9ecef); height: 140px; }

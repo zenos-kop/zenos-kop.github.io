@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kategori Produk - eCustomers</title>
+  <meta name="description" content="Temukan produk fashion muslimah terbaik di eCustomers. Belanja mudah, cepat, dan aman." />
+  
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom Styles -->
+  <link href="../assets/css/modern-style.css" rel="stylesheet" />
+</head>
+<body>
+<!-- Modern Navbar -->
+<nav class="navbar navbar-expand-lg navbar-modern sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="../index.html">eCustomers</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav" aria-label="Buka menu navigasi">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarSupportedContent">
+      <form class="d-flex ms-auto me-3" role="search">
+        <input class="form-control rounded-pill" type="search" placeholder="Cari produk..." id="searchInput" aria-label="Cari produk">
+      </form>
+      <ul class="navbar-nav mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="promo.html">Promo</a></li>
+        <li class="nav-item"><a class="nav-link active" href="kategori.html">Kategori</a></li>
+        <li class="nav-item">
+          <a class="nav-link" href="cart.html" aria-label="Lihat keranjang belanja">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cartCount" class="badge bg-primary rounded-pill ms-1">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Offcanvas Mobile -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title fw-bold">eCustomers</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Tutup menu"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="promo.html">Promo</a></li>
+      <li class="nav-item"><a class="nav-link active" href="kategori.html">Kategori</a></li>
+      <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Page Header -->
+<section class="hero-section animate-fade-in" style="padding: 2rem 0;">
+  <div class="container">
+    <h1 class="hero-title" id="pageTitle">Semua Produk</h1>
+    <p class="hero-subtitle">Temukan produk fashion muslimah terbaik untuk gaya hidup modern Anda</p>
+  </div>
+</section>
+
+<!-- Main Content -->
+<main class="container py-5">
+  <!-- Filters -->
+  <section class="mb-4">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Cari produk..." id="filterSearch" aria-label="Cari produk">
+          <button class="btn btn-modern" type="button" onclick="filterProducts()" aria-label="Cari produk">
+            <i class="fas fa-search"></i> Cari
+          </button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <select class="form-select" id="categoryFilter" onchange="filterProducts()" aria-label="Pilih kategori">
+          <option value="">Semua Kategori</option>
+          <option value="Fashion Muslim">Fashion Muslim</option>
+          <option value="Hijab">Hijab</option>
+          <option value="Aksesoris">Aksesoris</option>
+          <option value="Kaos Kaki">Kaos Kaki</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <section>
+    <div id="productsGrid" class="row g-4">
+      <div class="col-12 text-center">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Empty State -->
+    <div id="emptyState" class="text-center py-5" style="display: none;">
+      <i class="fas fa-search fa-3x text-muted mb-3"></i>
+      <h4 class="text-muted">Produk tidak ditemukan</h4>
+      <p class="text-muted">Coba kata kunci lain atau lihat semua produk</p>
+      <button class="btn btn-modern" onclick="clearFilters()" aria-label="Lihat semua produk">Lihat Semua Produk</button>
+    </div>
+  </section>
+</main>
+
+<!-- Modern Footer -->
+<footer class="footer-modern py-5 mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h5 class="fw-bold mb-3">eCustomers</h5>
+        <p class="text-muted">Belanja mudah, cepat, dan aman dengan tampilan modern.</p>
+      </div>
+      <div class="col-md-6">
+        <h6 class="fw-bold mb-3">Quick Links</h6>
+        <ul class="list-unstyled">
+          <li><a href="../pages/tentang.html" class="text-decoration-none text-muted">Tentang Kami</a></li>
+          <li><a href="../pages/kontak.html" class="text-decoration-none text-muted">Kontak</a></li>
+          <li><a href="../pages/promo.html" class="text-decoration-none text-muted">Promo</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="my-4">
+    <div class="text-center text-muted">
+      <p>&copy; 2025 eCustomers. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/utils.js"></script>
+<script src="../assets/js/cart.js"></script>
+<script>
+let allProducts = [];
+let filteredProducts = [];
+
+// Load products
+document.addEventListener('DOMContentLoaded', function() {
+  loadProducts();
+  setupSearch();
+});
+
+async function loadProducts() {
+  try {
+    const response = await fetch('../assets/data/products.seed.json');
+    allProducts = await response.json();
+    filterProducts();
+  } catch (error) {
+    console.error('Error loading products:', error);
+  }
+}
+
+function filterProducts() {
+  const searchTerm = document.getElementById('filterSearch').value.toLowerCase();
+  const category = document.getElementById('categoryFilter').value;
+  const urlParams = new URLSearchParams(window.location.search);
+  const searchQuery = urlParams.get('q')?.toLowerCase() || '';
+  
+  const finalSearch = searchTerm || searchQuery;
+  
+  filteredProducts = allProducts.filter(product => {
+    const matchesSearch = !finalSearch || 
+      product.name.toLowerCase().includes(finalSearch) ||
+      product.category.toLowerCase().includes(finalSearch);
+    
+    const matchesCategory = !category || product.category === category;
+    
+    return matchesSearch && matchesCategory;
+  });
+  
+  renderProducts();
+  updateTitle();
+}
+
+function renderProducts() {
+  const container = document.getElementById('productsGrid');
+  const emptyState = document.getElementById('emptyState');
+  
+  if (filteredProducts.length === 0) {
+    container.innerHTML = '';
+    emptyState.style.display = 'block';
+    return;
+  }
+  
+  emptyState.style.display = 'none';
+  container.innerHTML = '';
+  
+  filteredProducts.forEach(product => {
+    const card = document.createElement('div');
+    card.className = 'col-lg-3 col-md-4 col-sm-6';
+    
+    const discountPrice = product.promo && product.discount > 0 
+      ? Math.round(product.price * (1 - product.discount / 100))
+      : null;
+    
+    card.innerHTML = `
+      <div class="card h-100 shadow-sm">
+        <img src="${product.image}" class="card-img-top" alt="${product.name}">
+        <div class="card-body d-flex flex-column">
+          <h6 class="card-title">${product.name}</h6>
+          <p class="card-text text-muted mb-2">${product.category}</p>
+          <div class="mt-auto">
+            ${discountPrice 
+              ? `<span class="text-danger fw-bold">Rp${discountPrice.toLocaleString()}</span>
+                 <small class="text-muted text-decoration-line-through ms-2">Rp${product.price.toLocaleString()}</small>`
+              : `<span class="fw-bold">Rp${product.price.toLocaleString()}</span>`
+            }
+          </div>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function updateTitle() {
+  const category = document.getElementById('categoryFilter').value;
+  const title = category || 'Semua Produk';
+  document.getElementById('pageTitle').textContent = title;
+}
+
+function clearFilters() {
+  document.getElementById('filterSearch').value = '';
+  document.getElementById('categoryFilter').value = '';
+  filterProducts();
+}
+
+function setupSearch() {
+  document.getElementById('searchInput').addEventListener('keyup', function(e) {
+    if (e.key === 'Enter') {
+      document.getElementById('filterSearch').value = this.value;
+      filterProducts();
+    }
+  });
+}
+</script>
+</body>
+</html>

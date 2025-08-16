@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>eCustomers - Modern Fashion Store | Hijab & Fashion Muslimah</title>
+  <meta name="description" content="eCustomers - Belanja mudah, cepat, dan aman dengan tampilan modern. Temukan 1000+ produk fashion muslimah terbaik! Hijab, aksesoris, dan fashion muslim." />
+  <meta name="keywords" content="hijab, fashion muslimah, aksesoris hijab, pashmina, ciput, ecustomers" />
+  <meta name="author" content="eCustomers">
+  <meta name="robots" content="index, follow" />
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Custom Styles -->
+  <link href="assets/css/modern-style.css" rel="stylesheet" />
+</head>
+<body>
+<!-- Modern Navbar -->
+<nav class="navbar navbar-expand-lg navbar-modern sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="/">eCustomers</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav" aria-label="Buka menu navigasi">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarSupportedContent">
+      <form class="d-flex ms-auto me-3" role="search">
+        <input class="form-control rounded-pill" type="search" placeholder="Cari produk..." id="searchInput" aria-label="Cari produk">
+      </form>
+      <ul class="navbar-nav mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="pages/promo.html">Promo</a></li>
+        <li class="nav-item"><a class="nav-link" href="pages/kategori.html">Kategori</a></li>
+        <li class="nav-item">
+          <a class="nav-link position-relative" href="pages/cart.html" aria-label="Lihat keranjang belanja">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cartCount" class="badge bg-primary rounded-pill position-absolute top-0 start-100 translate-middle">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Offcanvas Mobile -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title fw-bold">eCustomers</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Tutup menu"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form class="d-flex mb-3" role="search">
+      <input class="form-control rounded-pill" type="search" placeholder="Cari produk..." id="searchInputMobile" aria-label="Cari produk">
+    </form>
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="pages/promo.html">Promo</a></li>
+      <li class="nav-item"><a class="nav-link" href="pages/kategori.html">Kategori</a></li>
+      <li class="nav-item"><a class="nav-link" href="pages/cart.html">Keranjang</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Hero Section -->
+<section class="hero-section animate-fade-in">
+  <div class="container text-center">
+    <h1 class="hero-title">Selamat Datang di eCustomers</h1>
+    <p class="hero-subtitle">Fashion muslimah modern, nyaman, dan berkualitas untuk gaya hidup Anda</p>
+    <div class="mt-4">
+      <a href="#produkUnggulan" class="btn btn-modern me-3">Jelajahi Produk</a>
+      <a href="pages/promo.html" class="btn btn-outline-modern">Lihat Promo</a>
+    </div>
+  </div>
+</section>
+
+<!-- Produk Unggulan -->
+<main class="container py-5">
+  <h2 class="fw-bold mb-4 text-gradient">Produk Unggulan ⭐</h2>
+  <div id="produkUnggulan" class="product-grid">
+    <div class="col-12 text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Modern Footer -->
+<footer class="footer-modern py-5 mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h5 class="fw-bold mb-3">eCustomers</h5>
+        <p class="text-muted">Belanja mudah, cepat, dan aman dengan tampilan modern.</p>
+      </div>
+      <div class="col-md-6">
+        <h6 class="fw-bold mb-3">Quick Links</h6>
+        <ul class="list-unstyled">
+          <li><a href="pages/tentang.html" class="text-decoration-none text-muted">Tentang Kami</a></li>
+          <li><a href="pages/kontak.html" class="text-decoration-none text-muted">Kontak</a></li>
+          <li><a href="pages/promo.html" class="text-decoration-none text-muted">Promo</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="my-4" />
+    <div class="text-center text-muted">
+      <p>&copy; 2025 eCustomers. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/6281234567890" class="whatsapp-float" target="_blank" rel="noopener" title="Chat via WhatsApp" aria-label="Chat via WhatsApp">
+  <i class="fab fa-whatsapp fa-2x"></i>
+</a>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/utils.js"></script>
+<script src="assets/js/cart.js"></script>
+<script>
+// Global variables
+let allProducts = [];
+let filteredProducts = [];
+
+// Initialize cart count on page load
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize cart count
+  if (window.cartManager) {
+    window.cartManager.updateCartCount();
+  }
+  
+  // Load products
+  loadProducts();
+  
+  // Setup search functionality
+  setupSearch();
+  
+  // Navbar scroll effect
+  window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar-modern');
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+});
+
+// Load products from JSON
+async function loadProducts() {
+  try {
+    const res = await fetch('assets/data/products.seed.json');
+    allProducts = await res.json();
+    filteredProducts = [...allProducts];
+    renderProducts(allProducts.slice(0, 8));
+  } catch (error) {
+    console.error('Error loading products:', error);
+    document.getElementById('produkUnggulan').innerHTML = 
+      '<div class="col-12 text-center py-5"><p class="text-danger">Gagal memuat produk. Silakan refresh halaman.</p></div>';
+  }
+}
+
+// Render products to container
+function renderProducts(products) {
+  const container = document.getElementById('produkUnggulan');
+  container.innerHTML = '';
+  
+  if (products.length === 0) {
+    container.innerHTML = 
+      '<div class="col-12 text-center py-5"><p class="text-muted">Produk tidak ditemukan.</p></div>';
+    return;
+  }
+  
+  products.forEach(product => {
+    const col = document.createElement('div');
+    col.className = 'col-lg-3 col-md-4 col-sm-6';
+    
+    const discountPrice = product.promo && product.discount > 0 
+      ? Math.round(product.price * (1 - product.discount / 100))
+      : product.price;
+    
+    col.innerHTML = `
+      <div class="card-modern card h-100">
+        <img 
+          src="assets/images/${product.image}"
+          class="card-img-top card-image"
+          alt="${product.name}"
+          loading="lazy"
+          onerror="this.onerror=null;this.src='assets/images/placeholder.jpg';">
+        <div class="card-content">
+          <h5 class="card-title">${product.name}</h5>
+          <p class="text-muted small">${product.category}</p>
+          <div class="mb-3">
+            <span class="card-price">${Utils.formatPrice(discountPrice)}</span>
+            ${product.promo && product.discount > 0 
+              ? `<span class="card-original-price">${Utils.formatPrice(product.price)}</span>` 
+              : ''}
+          </div>
+          ${product.promo && product.discount > 0 
+            ? `<span class="badge bg-danger mb-3">${product.discount}% OFF</span>` 
+            : ''}
+          <button class="btn btn-modern w-100" onclick="addToCart(${product.id})">
+            <i class="fas fa-cart-plus me-2"></i>Add to Cart
+          </button>
+        </div>
+      </div>
+    `;
+    container.appendChild(col);
+  });
+}
+
+// Setup search functionality
+function setupSearch() {
+  const searchInputs = [
+    document.getElementById('searchInput'),
+    document.getElementById('searchInputMobile')
+  ];
+  
+  searchInputs.forEach(input => {
+    if (input) {
+      input.addEventListener('input', debounceSearch);
+    }
+  });
+}
+
+// Debounced search function
+function debounceSearch(event) {
+  const searchTerm = event.target.value.toLowerCase().trim();
+  
+  if (searchTerm === '') {
+    filteredProducts = [...allProducts];
+  } else {
+    filteredProducts = allProducts.filter(product => 
+      product.name.toLowerCase().includes(searchTerm) ||
+      product.category.toLowerCase().includes(searchTerm)
+    );
+  }
+  
+  renderProducts(filteredProducts.slice(0, 8));
+}
+
+// Utility function for debouncing
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+// Override the debounceSearch with debounced version
+const debounceSearch = debounce(function(event) {
+  const searchTerm = event.target.value.toLowerCase().trim();
+  
+  if (searchTerm === '') {
+    filteredProducts = [...allProducts];
+  } else {
+    filteredProducts = allProducts.filter(product => 
+      product.name.toLowerCase().includes(searchTerm) ||
+      product.category.toLowerCase().includes(searchTerm)
+    );
+  }
+  
+  renderProducts(filteredProducts.slice(0, 8));
+}, 300);
+</script>
+</body>
+</html>
