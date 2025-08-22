@@ -1,275 +1,347 @@
 <!DOCTYPE html>
 <html lang="id" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>eCustomers - Modern Fashion Store | Hijab & Fashion Muslimah</title>
-  <meta name="description" content="eCustomers - Belanja mudah, cepat, dan aman dengan tampilan modern. Temukan 1000+ produk fashion muslimah terbaik! Hijab, aksesoris, dan fashion muslim." />
-  <meta name="keywords" content="hijab, fashion muslimah, aksesoris hijab, pashmina, ciput, ecustomers" />
-  <meta name="author" content="eCustomers">
-  <meta name="robots" content="index, follow" />
-
-  <!-- Bootstrap & Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-  <!-- Custom Styles -->
-  <link href="assets/css/modern-style.css" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eCustomers - Toko Online Modern</title>
+  <meta name="description" content="Toko online modern dengan dark mode, carousel promo, dan fitur keranjang belanja">
+  
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/modern-style-comprehensive.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-<!-- Modern Navbar -->
-<nav class="navbar navbar-expand-lg navbar-modern sticky-top">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="/">eCustomers</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav" aria-label="Buka menu navigasi">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarSupportedContent">
-      <form class="d-flex ms-auto me-3" role="search">
-        <input class="form-control rounded-pill" type="search" placeholder="Cari produk..." id="searchInput" aria-label="Cari produk">
+<body class="bg-body">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg sticky-top bg-white border-bottom navbar-modern">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">eSarQ</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarSupportedContent">
+        <form class="d-flex ms-auto me-3" role="search" action="pages/produk.html">
+          <input class="form-control" type="search" placeholder="Cari produk..." name="q">
+        </form>
+        <ul class="navbar-nav mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="pages/promo.html">Promo</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/kategori.html">Kategori</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/cart.html">
+              <i class="fas fa-shopping-cart"></i> Cart 
+              <span id="cartCount" class="badge text-bg-dark">0</span>
+            </a>
+          </li>
+          <!-- Import link removed -->
+          <li class="nav-item ms-2">
+          <button id="themeToggle" class="btn btn-outline-secondary btn-sm" title="Toggle dark/light mode">
+            <i class="fas fa-moon"></i>
+            <span class="visually-hidden">Toggle dark/light mode</span>
+          </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Offcanvas Mobile Menu -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">eCustomers</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <form class="d-flex mb-3" action="pages/produk.html">
+        <input class="form-control" type="search" placeholder="Cari produk..." name="q">
       </form>
-      <ul class="navbar-nav mb-2 mb-lg-0 align-items-lg-center">
+      <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" href="pages/promo.html">Promo</a></li>
         <li class="nav-item"><a class="nav-link" href="pages/kategori.html">Kategori</a></li>
         <li class="nav-item">
-          <a class="nav-link position-relative" href="pages/cart.html" aria-label="Lihat keranjang belanja">
-            <i class="fa-solid fa-cart-shopping"></i>
-            <span id="cartCount" class="badge bg-primary rounded-pill position-absolute top-0 start-100 translate-middle">0</span>
+          <a class="nav-link" href="pages/cart.html">
+            Cart <span id="cartCountMobile" class="badge text-bg-dark">0</span>
           </a>
+        </li>
+        <!-- Import link removed -->
+        <li class="nav-item mt-3">
+          <button id="themeToggleMobile" class="btn btn-outline-secondary w-100">
+            <i class="fas fa-adjust"></i> Mode
+          </button>
         </li>
       </ul>
     </div>
   </div>
-</nav>
 
-<!-- Offcanvas Mobile -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title fw-bold">eCustomers</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Tutup menu"></button>
-  </div>
-  <div class="offcanvas-body">
-    <form class="d-flex mb-3" role="search">
-      <input class="form-control rounded-pill" type="search" placeholder="Cari produk..." id="searchInputMobile" aria-label="Cari produk">
-    </form>
-    <ul class="navbar-nav">
-      <li class="nav-item"><a class="nav-link" href="pages/promo.html">Promo</a></li>
-      <li class="nav-item"><a class="nav-link" href="pages/kategori.html">Kategori</a></li>
-      <li class="nav-item"><a class="nav-link" href="pages/cart.html">Keranjang</a></li>
-    </ul>
-  </div>
-</div>
-
-<!-- Hero Section -->
-<section class="hero-section animate-fade-in">
-  <div class="container text-center">
-    <h1 class="hero-title">Selamat Datang di eCustomers</h1>
-    <p class="hero-subtitle">Fashion muslimah modern, nyaman, dan berkualitas untuk gaya hidup Anda</p>
-    <div class="mt-4">
-      <a href="#produkUnggulan" class="btn btn-modern me-3">Jelajahi Produk</a>
-      <a href="pages/promo.html" class="btn btn-outline-modern">Lihat Promo</a>
-    </div>
-  </div>
-</section>
-
-<!-- Produk Unggulan -->
-<main class="container py-5">
-  <h2 class="fw-bold mb-4 text-gradient">Produk Unggulan ⭐</h2>
-  <div id="produkUnggulan" class="product-grid">
-    <div class="col-12 text-center py-5">
-      <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-    </div>
-  </div>
-</main>
-
-<!-- Modern Footer -->
-<footer class="footer-modern py-5 mt-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h5 class="fw-bold mb-3">eCustomers</h5>
-        <p class="text-muted">Belanja mudah, cepat, dan aman dengan tampilan modern.</p>
-      </div>
-      <div class="col-md-6">
-        <h6 class="fw-bold mb-3">Quick Links</h6>
-        <ul class="list-unstyled">
-          <li><a href="pages/tentang.html" class="text-decoration-none text-muted">Tentang Kami</a></li>
-          <li><a href="pages/kontak.html" class="text-decoration-none text-muted">Kontak</a></li>
-          <li><a href="pages/promo.html" class="text-decoration-none text-muted">Promo</a></li>
-        </ul>
-      </div>
-    </div>
-    <hr class="my-4" />
-    <div class="text-center text-muted">
-      <p>&copy; 2025 eCustomers. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
-
-<!-- WhatsApp Floating Button -->
-<a href="https://wa.me/6281234567890" class="whatsapp-float" target="_blank" rel="noopener" title="Chat via WhatsApp" aria-label="Chat via WhatsApp">
-  <i class="fab fa-whatsapp fa-2x"></i>
-</a>
-
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/utils.js"></script>
-<script src="assets/js/cart.js"></script>
-<script>
-// Global variables
-let allProducts = [];
-let filteredProducts = [];
-
-// Initialize cart count on page load
-document.addEventListener('DOMContentLoaded', function() {
-  // Initialize cart count
-  if (window.cartManager) {
-    window.cartManager.updateCartCount();
-  }
-  
-  // Load products
-  loadProducts();
-  
-  // Setup search functionality
-  setupSearch();
-  
-  // Navbar scroll effect
-  window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('.navbar-modern');
-    if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  });
-});
-
-// Load products from JSON
-async function loadProducts() {
-  try {
-    const res = await fetch('assets/data/products.seed.json');
-    allProducts = await res.json();
-    filteredProducts = [...allProducts];
-    renderProducts(allProducts.slice(0, 8));
-  } catch (error) {
-    console.error('Error loading products:', error);
-    document.getElementById('produkUnggulan').innerHTML = 
-      '<div class="col-12 text-center py-5"><p class="text-danger">Gagal memuat produk. Silakan refresh halaman.</p></div>';
-  }
-}
-
-// Render products to container
-function renderProducts(products) {
-  const container = document.getElementById('produkUnggulan');
-  container.innerHTML = '';
-  
-  if (products.length === 0) {
-    container.innerHTML = 
-      '<div class="col-12 text-center py-5"><p class="text-muted">Produk tidak ditemukan.</p></div>';
-    return;
-  }
-  
-  products.forEach(product => {
-    const col = document.createElement('div');
-    col.className = 'col-lg-3 col-md-4 col-sm-6';
-    
-    const discountPrice = product.promo && product.discount > 0 
-      ? Math.round(product.price * (1 - product.discount / 100))
-      : product.price;
-    
-    col.innerHTML = `
-      <div class="card-modern card h-100">
-        <img 
-          src="assets/images/${product.image}"
-          class="card-img-top card-image"
-          alt="${product.name}"
-          loading="lazy"
-          onerror="this.onerror=null;this.src='assets/images/placeholder.jpg';">
-        <div class="card-content">
-          <h5 class="card-title">${product.name}</h5>
-          <p class="text-muted small">${product.category}</p>
-          <div class="mb-3">
-            <span class="card-price">${Utils.formatPrice(discountPrice)}</span>
-            ${product.promo && product.discount > 0 
-              ? `<span class="card-original-price">${Utils.formatPrice(product.price)}</span>` 
-              : ''}
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="row align-items-center min-vh-75">
+        <div class="col-lg-6" data-aos="fade-right">
+          <h1 class="display-4 fw-bold mb-4">
+            Belanja Mudah, Cepat & Aman
+            <br>
+            <span class="text-primary">dengan eCustomers</span>
+          </h1>
+          <p class="lead mb-4">
+            Temukan berbagai produk berkualitas dengan harga terbaik. 
+            Nikmati pengalaman belanja online yang modern dan user-friendly.
+          </p>
+          <div class="d-flex gap-3 flex-wrap">
+            <a href="#products" class="btn btn-primary-modern btn-lg">
+              <i class="fas fa-shopping-bag me-2"></i>Belanja Sekarang
+            </a>
+            <a href="pages/promo.html" class="btn btn-outline-modern btn-lg">
+              <i class="fas fa-tags me-2"></i>Lihat Promo
+            </a>
           </div>
-          ${product.promo && product.discount > 0 
-            ? `<span class="badge bg-danger mb-3">${product.discount}% OFF</span>` 
-            : ''}
-          <button class="btn btn-modern w-100" onclick="addToCart(${product.id})">
-            <i class="fas fa-cart-plus me-2"></i>Add to Cart
-          </button>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="text-center">
+            <img src="assets/images/Hijab Paris.jpg" alt="Hero Image" class="img-fluid rounded-4 shadow-lg">
+          </div>
         </div>
       </div>
-    `;
-    container.appendChild(col);
-  });
-}
+    </div>
+  </section>
 
-// Setup search functionality
-function setupSearch() {
-  const searchInputs = [
-    document.getElementById('searchInput'),
-    document.getElementById('searchInputMobile')
-  ];
-  
-  searchInputs.forEach(input => {
-    if (input) {
-      input.addEventListener('input', debounceSearch);
+  <!-- Categories Section -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="fw-bold">Kategori Produk</h2>
+        <p class="text-muted">Pilih dari berbagai kategori produk berkualitas</p>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="card h-100 text-center product-card-modern">
+            <img src="assets/images/Hijab Paris.jpg" class="card-img-top" alt="Hijab">
+            <div class="card-body">
+              <h5 class="card-title">Hijab</h5>
+              <p class="card-text">Berbagai model hijab modern</p>
+              <a href="pages/kategori.html?cat=hijab" class="btn btn-outline-primary btn-sm">Lihat Semua</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="card h-100 text-center product-card-modern">
+            <img src="assets/images/bros.jpg" class="card-img-top" alt="Aksesoris">
+            <div class="card-body">
+              <h5 class="card-title">Aksesoris</h5>
+              <p class="card-text">Bros, scrunchie, dan lainnya</p>
+              <a href="pages/kategori.html?cat=aksesoris" class="btn btn-outline-primary btn-sm">Lihat Semua</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="card h-100 text-center product-card-modern">
+            <img src="assets/images/Pashmina Plisket.jpg" class="card-img-top" alt="Pashmina">
+            <div class="card-body">
+              <h5 class="card-title">Pashmina</h5>
+              <p class="card-text">Pashmina premium berkualitas</p>
+              <a href="pages/kategori.html?cat=pashmina" class="btn btn-outline-primary btn-sm">Lihat Semua</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="card h-100 text-center product-card-modern">
+            <img src="assets/images/innerninja.jpg" class="card-img-top" alt="Inner">
+            <div class="card-body">
+              <h5 class="card-title">Inner</h5>
+              <p class="card-text">Inner ninja dan ciput</p>
+              <a href="pages/kategori.html?cat=inner" class="btn btn-outline-primary btn-sm">Lihat Semua</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products Section -->
+  <section class="py-5" id="products">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="fw-bold">Produk Unggulan</h2>
+        <p class="text-muted">Produk terbaik pilihan kami</p>
+      </div>
+      
+      <div class="row g-4" id="productGrid">
+        <!-- Products will be loaded dynamically -->
+      </div>
+      
+      <div class="text-center mt-4">
+        <button class="btn btn-outline-primary" onclick="loadMoreProducts()">
+          <i class="fas fa-plus me-2"></i>Muat Lebih Banyak
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="py-5 bg-primary text-white">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6" data-aos="fade-right">
+          <h3 class="fw-bold mb-3">Dapatkan Promo Spesial!</h3>
+          <p class="mb-0">Berlangganan newsletter untuk update promo dan produk terbaru</p>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <form class="d-flex gap-2" onsubmit="subscribeNewsletter(event)">
+            <input type="email" class="form-control" placeholder="Email Anda" required>
+            <button type="submit" class="btn btn-light">
+              <i class="fas fa-paper-plane"></i> Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-modern">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <h5 class="fw-bold mb-3">eCustomers</h5>
+          <p class="text-light">Toko online modern dengan berbagai produk berkualitas. Belanja mudah, cepat, dan aman.</p>
+          <div class="d-flex gap-3">
+            <a href="#" class="text-light"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="text-light"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-light"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 mb-4">
+          <h6 class="fw-bold mb-3">Halaman</h6>
+          <ul class="list-unstyled">
+            <li><a href="pages/tentang.html">Tentang</a></li>
+            <li><a href="pages/kontak.html">Kontak</a></li>
+            <li><a href="pages/promo.html">Promo</a></li>
+            <li><a href="pages/kategori.html">Kategori</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <h6 class="fw-bold mb-3">Kontak</h6>
+          <p class="mb-2"><i class="fas fa-envelope me-2"></i>info@ecustomers.com</p>
+          <p class="mb-2"><i class="fas fa-phone me-2"></i>+62 83172673414</p>
+          <p class="mb-0"><i class="fas fa-map-marker-alt me-2"></i>Bandung, Indonesia</p>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="text-center">
+        <p class="mb-0">&copy; 2025 eCustomers. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS Animation -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Custom JS -->
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/dark-mode-complete.js"></script>
+
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+
+    // Product data
+    const products = [
+      { id: 1, name: "Hijab Premium Segi Empat", price: "Rp 75.000", img: "assets/images/Hijab Paris.jpg", category: "hijab" },
+      { id: 2, name: "Inner Ninja Premium", price: "Rp 45.000", img: "assets/images/innerninja.jpg", category: "inner" },
+      { id: 3, name: "Pashmina Plisket", price: "Rp 60.000", img: "assets/images/Pashmina Plisket.jpg", category: "pashmina" },
+      { id: 4, name: "Bros Kristal", price: "Rp 25.000", img: "assets/images/bros.jpg", category: "aksesoris" },
+      { id: 5, name: "Scrunchie Satin", price: "Rp 15.000", img: "assets/images/scrunchie.jpg", category: "aksesoris" },
+      { id: 6, name: "Ciput Rajut", price: "Rp 35.000", img: "assets/images/ciput.jpg", category: "inner" },
+      { id: 7, name: "Hijab Paris", price: "Rp 50.000", img: "assets/images/Hijab Paris.jpg", category: "hijab" },
+      { id: 8, name: "Inner Rajut", price: "Rp 30.000", img: "assets/images/innerrajut.jpg", category: "aksesoris" }
+    ];
+
+    let loadedProducts = 0;
+    const productsPerLoad = 4;
+
+    function loadProducts() {
+      const productGrid = document.getElementById('productGrid');
+      const slice = products.slice(loadedProducts, loadedProducts + productsPerLoad);
+      
+      slice.forEach(product => {
+        const col = document.createElement('div');
+        col.className = 'col-lg-3 col-md-6';
+        col.innerHTML = `
+          <div class="card h-100 shadow-sm product-card-modern" data-aos="fade-up">
+            <img src="${product.img}" class="card-img-top" alt="${product.name}" 
+                 onerror="this.src='assets/images/placeholder.jpg'">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">${product.name}</h5>
+              <p class="card-text text-primary fw-bold">${product.price}</p>
+              <button class="btn btn-outline-success mt-auto" onclick="addToCart(${product.id}, '${product.name}')">
+                <i class="fas fa-cart-plus me-2"></i>Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+        `;
+        productGrid.appendChild(col);
+      });
+      
+      loadedProducts += slice.length;
+      
+      if (loadedProducts >= products.length) {
+        document.querySelector('button[onclick="loadMoreProducts()"]').style.display = 'none';
+      }
     }
-  });
-}
 
-// Debounced search function
-function debounceSearch(event) {
-  const searchTerm = event.target.value.toLowerCase().trim();
-  
-  if (searchTerm === '') {
-    filteredProducts = [...allProducts];
-  } else {
-    filteredProducts = allProducts.filter(product => 
-      product.name.toLowerCase().includes(searchTerm) ||
-      product.category.toLowerCase().includes(searchTerm)
-    );
-  }
-  
-  renderProducts(filteredProducts.slice(0, 8));
-}
+    function loadMoreProducts() {
+      loadProducts();
+    }
 
-// Utility function for debouncing
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-}
+    function addToCart(id, name) {
+      let cartCount = parseInt(document.getElementById('cartCount').innerText);
+      cartCount++;
+      document.getElementById('cartCount').innerText = cartCount;
+      document.getElementById('cartCountMobile').innerText = cartCount;
+      
+      Swal.fire({
+        icon: 'success',
+        title: 'Berhasil!',
+        text: `${name} ditambahkan ke keranjang`,
+        timer: 1500,
+        showConfirmButton: false
+      });
+    }
 
-// Override the debounceSearch with debounced version
-const debounceSearch = debounce(function(event) {
-  const searchTerm = event.target.value.toLowerCase().trim();
-  
-  if (searchTerm === '') {
-    filteredProducts = [...allProducts];
-  } else {
-    filteredProducts = allProducts.filter(product => 
-      product.name.toLowerCase().includes(searchTerm) ||
-      product.category.toLowerCase().includes(searchTerm)
-    );
-  }
-  
-  renderProducts(filteredProducts.slice(0, 8));
-}, 300);
-</script>
+    function subscribeNewsletter(e) {
+      e.preventDefault();
+      const email = e.target.querySelector('input[type="email"]').value;
+      
+      Swal.fire({
+        icon: 'success',
+        title: 'Berhasil!',
+        text: `Terima kasih! Email ${email} berhasil berlangganan newsletter.`,
+        timer: 2000,
+        showConfirmButton: false
+      });
+      
+      e.target.reset();
+    }
+
+    // Initial load
+    loadProducts();
+  </script>
 </body>
 </html>
