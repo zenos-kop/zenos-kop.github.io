@@ -2,245 +2,502 @@
 <html lang="id" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kategori Produk - eCustomers</title>
-  <meta name="description" content="Temukan produk fashion muslimah terbaik di eCustomers. Belanja mudah, cepat, dan aman." />
-  
-  <!-- Bootstrap & Icons -->
+  <meta name="description" content="Kategori produk eCustomers - Toko online modern dengan dark mode" />
+
+  <!-- Bootstrap 5.3 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-  
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Custom Styles -->
-  <link href="../assets/css/modern-style.css" rel="stylesheet" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Custom -->
+  <link rel="stylesheet" href="../assets/css/modern-style-comprehensive.css" />
+  <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+
+  <style>
+    :root {
+      --glass-bg: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --shadow-glow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+    }
+
+    .category-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 1rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow-glow);
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .category-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .category-card img {
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .category-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .filter-section {
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      box-shadow: var(--shadow-glow);
+      position: sticky;
+      top: 100px;
+    }
+
+    .badge-promo {
+      background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+      color: #fff;
+      border-radius: 2rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 4rem;
+      color: var(--bs-secondary);
+    }
+
+    .section-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .form-select, .form-control {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 0.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-select:focus, .form-control:focus {
+      background: var(--glass-bg);
+      border-color: var(--primary-500);
+      box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    }
+
+    .btn-modern {
+      border-radius: 0.75rem;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .btn-primary-modern {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .btn-primary-modern:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    .loading-skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+    }
+
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    [data-theme="dark"] body {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    }
+
+    [data-theme="dark"] .category-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    [data-theme="dark"] .filter-section {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      .filter-section {
+        position: relative;
+        top: 0;
+        margin-bottom: 2rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<!-- Modern Navbar -->
-<nav class="navbar navbar-expand-lg navbar-modern sticky-top">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="../index.html">eCustomers</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav" aria-label="Buka menu navigasi">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarSupportedContent">
-      <form class="d-flex ms-auto me-3" role="search">
-        <input class="form-control rounded-pill" type="search" placeholder="Cari produk..." id="searchInput" aria-label="Cari produk">
-      </form>
-      <ul class="navbar-nav mb-2 mb-lg-0 align-items-lg-center">
-        <li class="nav-item"><a class="nav-link" href="promo.html">Promo</a></li>
-        <li class="nav-item"><a class="nav-link active" href="kategori.html">Kategori</a></li>
-        <li class="nav-item">
-          <a class="nav-link" href="cart.html" aria-label="Lihat keranjang belanja">
-            <i class="fa-solid fa-cart-shopping"></i>
-            <span id="cartCount" class="badge bg-primary rounded-pill ms-1">0</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-modern sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="../index.html">
+        <i class="fas fa-arrow-left me-2"></i>eCustomers
+      </a>
 
-<!-- Offcanvas Mobile -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title fw-bold">eCustomers</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Tutup menu"></button>
-  </div>
-  <div class="offcanvas-body">
-    <ul class="navbar-nav">
-      <li class="nav-item"><a class="nav-link" href="promo.html">Promo</a></li>
-      <li class="nav-item"><a class="nav-link active" href="kategori.html">Kategori</a></li>
-      <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
-    </ul>
-  </div>
-</div>
+      <!-- Toggler -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-<!-- Page Header -->
-<section class="hero-section animate-fade-in" style="padding: 2rem 0;">
-  <div class="container">
-    <h1 class="hero-title" id="pageTitle">Semua Produk</h1>
-    <p class="hero-subtitle">Temukan produk fashion muslimah terbaik untuk gaya hidup modern Anda</p>
-  </div>
-</section>
-
-<!-- Main Content -->
-<main class="container py-5">
-  <!-- Filters -->
-  <section class="mb-4">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Cari produk..." id="filterSearch" aria-label="Cari produk">
-          <button class="btn btn-modern" type="button" onclick="filterProducts()" aria-label="Cari produk">
-            <i class="fas fa-search"></i> Cari
-          </button>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <select class="form-select" id="categoryFilter" onchange="filterProducts()" aria-label="Pilih kategori">
-          <option value="">Semua Kategori</option>
-          <option value="Fashion Muslim">Fashion Muslim</option>
-          <option value="Hijab">Hijab</option>
-          <option value="Aksesoris">Aksesoris</option>
-          <option value="Kaos Kaki">Kaos Kaki</option>
-        </select>
-      </div>
-    </div>
-  </section>
-
-  <!-- Products Grid -->
-  <section>
-    <div id="productsGrid" class="row g-4">
-      <div class="col-12 text-center">
-        <div class="spinner-border text-primary" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Empty State -->
-    <div id="emptyState" class="text-center py-5" style="display: none;">
-      <i class="fas fa-search fa-3x text-muted mb-3"></i>
-      <h4 class="text-muted">Produk tidak ditemukan</h4>
-      <p class="text-muted">Coba kata kunci lain atau lihat semua produk</p>
-      <button class="btn btn-modern" onclick="clearFilters()" aria-label="Lihat semua produk">Lihat Semua Produk</button>
-    </div>
-  </section>
-</main>
-
-<!-- Modern Footer -->
-<footer class="footer-modern py-5 mt-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h5 class="fw-bold mb-3">eCustomers</h5>
-        <p class="text-muted">Belanja mudah, cepat, dan aman dengan tampilan modern.</p>
-      </div>
-      <div class="col-md-6">
-        <h6 class="fw-bold mb-3">Quick Links</h6>
-        <ul class="list-unstyled">
-          <li><a href="../pages/tentang.html" class="text-decoration-none text-muted">Tentang Kami</a></li>
-          <li><a href="../pages/kontak.html" class="text-decoration-none text-muted">Kontak</a></li>
-          <li><a href="../pages/promo.html" class="text-decoration-none text-muted">Promo</a></li>
+      <!-- Nav links -->
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="promo.html"><i class="fas fa-tags me-1"></i>Promo</a></li>
+          <li class="nav-item"><a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart me-1"></i>Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="checkout.html"><i class="fas fa-credit-card me-1"></i>Checkout</a></li>
+          <li class="nav-item"><a class="nav-link" href="search.html"><i class="fas fa-search me-1"></i>Cari</a></li>
+          <!-- Dark mode toggle button -->
+          <li class="nav-item ms-2">
+            <button id="themeToggle" class="btn btn-outline-secondary btn-sm" title="Toggle dark/light mode">
+              <i class="fas fa-moon"></i>
+              <span class="visually-hidden">Toggle dark/light mode</span>
+            </button>
+          </li>
         </ul>
       </div>
     </div>
-    <hr class="my-4">
-    <div class="text-center text-muted">
-      <p>&copy; 2025 eCustomers. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
+  </nav>
 
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../assets/js/utils.js"></script>
-<script src="../assets/js/cart.js"></script>
-<script>
-let allProducts = [];
-let filteredProducts = [];
+  <!-- Main -->
+  <section class="py-5" style="margin-top:80px">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="mb-2"><i class="fas fa-tags me-2"></i>Kategori Produk</h2>
+          <p class="text-muted">Temukan produk favorit Anda dari berbagai kategori</p>
+        </div>
+      </div>
 
-// Load products
-document.addEventListener('DOMContentLoaded', function() {
-  loadProducts();
-  setupSearch();
-});
+      <div class="row">
+        <!-- Filter -->
+        <div class="col-lg-3 mb-4">
+          <div class="filter-section">
+            <h5 class="mb-3"><i class="fas fa-filter me-2"></i>Filter</h5>
 
-async function loadProducts() {
-  try {
-    const response = await fetch('../assets/data/products.seed.json');
-    allProducts = await response.json();
-    filterProducts();
-  } catch (error) {
-    console.error('Error loading products:', error);
-  }
-}
+            <!-- Kategori -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Kategori</label>
+              <select id="categoryFilter" class="form-select">
+                <option value="">Semua Kategori</option>
+                <option>Fashion Muslim</option>
+                <option>Hijab</option>
+                <option>Kaos Kaki</option>
+                <option>Aksesoris</option>
+              </select>
+            </div>
 
-function filterProducts() {
-  const searchTerm = document.getElementById('filterSearch').value.toLowerCase();
-  const category = document.getElementById('categoryFilter').value;
-  const urlParams = new URLSearchParams(window.location.search);
-  const searchQuery = urlParams.get('q')?.toLowerCase() || '';
-  
-  const finalSearch = searchTerm || searchQuery;
-  
-  filteredProducts = allProducts.filter(product => {
-    const matchesSearch = !finalSearch || 
-      product.name.toLowerCase().includes(finalSearch) ||
-      product.category.toLowerCase().includes(finalSearch);
-    
-    const matchesCategory = !category || product.category === category;
-    
-    return matchesSearch && matchesCategory;
-  });
-  
-  renderProducts();
-  updateTitle();
-}
+            <!-- Harga -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Harga</label>
+              <select id="priceFilter" class="form-select">
+                <option value="">Semua Harga</option>
+                <option value="0-20000">Rp 0 - Rp 20.000</option>
+                <option value="20000-50000">Rp 20.000 - Rp 50.000</option>
+                <option value="50000+">Rp 50.000+</option>
+              </select>
+            </div>
 
-function renderProducts() {
-  const container = document.getElementById('productsGrid');
-  const emptyState = document.getElementById('emptyState');
-  
-  if (filteredProducts.length === 0) {
-    container.innerHTML = '';
-    emptyState.style.display = 'block';
-    return;
-  }
-  
-  emptyState.style.display = 'none';
-  container.innerHTML = '';
-  
-  filteredProducts.forEach(product => {
-    const card = document.createElement('div');
-    card.className = 'col-lg-3 col-md-4 col-sm-6';
-    
-    const discountPrice = product.promo && product.discount > 0 
-      ? Math.round(product.price * (1 - product.discount / 100))
-      : null;
-    
-    card.innerHTML = `
-      <div class="card h-100 shadow-sm">
-        <img src="${product.image}" class="card-img-top" alt="${product.name}">
-        <div class="card-body d-flex flex-column">
-          <h6 class="card-title">${product.name}</h6>
-          <p class="card-text text-muted mb-2">${product.category}</p>
-          <div class="mt-auto">
-            ${discountPrice 
-              ? `<span class="text-danger fw-bold">Rp${discountPrice.toLocaleString()}</span>
-                 <small class="text-muted text-decoration-line-through ms-2">Rp${product.price.toLocaleString()}</small>`
-              : `<span class="fw-bold">Rp${product.price.toLocaleString()}</span>`
-            }
+            <!-- Urutkan -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Urutkan</label>
+              <select id="sortFilter" class="form-select">
+                <option value="name">Nama A-Z</option>
+                <option value="price-low">Harga Terendah</option>
+                <option value="price-high">Harga Tertinggi</option>
+                <option value="rating">Rating Tertinggi</option>
+              </select>
+            </div>
+
+            <button class="btn btn-secondary w-100 mb-3" onclick="resetFilters()">
+              <i class="fas fa-undo me-1"></i>Reset
+            </button>
+
+            <button class="btn btn-primary w-100" onclick="applyFilters()">
+              <i class="fas fa-filter me-1"></i>Terapkan Filter
+          </div>
+        </div>
+
+        <!-- Products -->
+        <div class="col-lg-9">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <span id="resultCount" class="text-muted">Memuat produk...</span>
+          </div>
+          <div class="row" id="productGrid"></div>
+          <div id="emptyState" class="empty-state" style="display:none">
+            <i class="fas fa-search fa-3x mb-3 text-muted"></i>
+            <h5>Tidak ada produk ditemukan</h5>
+            <p class="text-muted">Coba ubah filter pencarian Anda</p>
           </div>
         </div>
       </div>
-    `;
-    container.appendChild(card);
-  });
-}
+    </div>
+  </section>
 
-function updateTitle() {
-  const category = document.getElementById('categoryFilter').value;
-  const title = category || 'Semua Produk';
-  document.getElementById('pageTitle').textContent = title;
-}
+  <!-- Footer -->
+  <footer class="footer-modern mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <h5 class="fw-bold mb-3">eCustomers</h5>
+          <p class="text-light">Toko online modern dengan berbagai produk berkualitas. Belanja mudah, cepat, dan aman.</p>
+        </div>
+        <div class="col-lg-2 mb-4">
+          <h6 class="fw-bold mb-3">Halaman</h6>
+          <ul class="list-unstyled">
+            <li><a href="tentang.html">Tentang</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+            <li><a href="promo.html">Promo</a></li>
+            <li><a href="kategori.html">Kategori</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="my-4" />
+      <div class="text-center">
+        <p class="mb-0">&copy; 2025 eCustomers. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
-function clearFilters() {
-  document.getElementById('filterSearch').value = '';
-  document.getElementById('categoryFilter').value = '';
-  filterProducts();
-}
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../assets/js/dark-mode-complete.js"></script>
 
-function setupSearch() {
-  document.getElementById('searchInput').addEventListener('keyup', function(e) {
-    if (e.key === 'Enter') {
-      document.getElementById('filterSearch').value = this.value;
-      filterProducts();
+  <script>
+    let allProducts = [];
+    let filteredProducts = [];
+
+    // Load data
+    async function loadProducts() {
+      try {
+        const res = await fetch('../assets/data/products.seed.json');
+        allProducts = await res.json();
+      } catch {
+        allProducts = [
+          { id: 101, name: "Handsocks Manset Jempol Muslimah", price: 15000, category: "Fashion Muslim", promo: true, discount: 10, rating: 4.5, image: "handsock.jpg" },
+          { id: 102, name: "Ciput Rajut Antislip", price: 12000, category: "Fashion Muslim", promo: false, discount: 0, rating: 4.6, image: "ciput.jpg" },
+          { id: 103, name: "Kerudung Pashmina Plisket", price: 29000, category: "Hijab", promo: true, discount: 20, rating: 4.7, image: "pashmina.jpg" },
+          { id: 104, name: "Kaos Kaki Muslimah Panjang", price: 10000, category: "Kaos Kaki", promo: false, discount: 0, rating: 4.3, image: "kaoskaki.jpg" },
+          { id: 105, name: "Inner Ninja Hijab", price: 25000, category: "Hijab", promo: true, discount: 15, rating: 4.4, image: "innerninja.jpg" },
+          { id: 106, name: "Manset Kaos Lengan Panjang", price: 35000, category: "Fashion Muslim", promo: true, discount: 10, rating: 4.5, image: "manset.jpg" },
+          { id: 107, name: "Jarum Pentul Premium 40 pcs", price: 9000, category: "Aksesoris", promo: false, discount: 0, rating: 4.2, image: "jarumpentul.jpg" },
+          { id: 108, name: "Headband Antislip Hijab", price: 14000, category: "Aksesoris", promo: true, discount: 5, rating: 4.1, image: "headband.jpg" },
+          { id: 109, name: "Bros Hijab Bunga", price: 12000, category: "Aksesoris", promo: false, discount: 0, rating: 4.0, image: "bros.jpg" },
+          { id: 110, name: "Pita Scrunchie Satin", price: 16000, category: "Aksesoris", promo: true, discount: 10, rating: 4.3, image: "scrunchie.jpg" }
+        ];
+      }
+      filteredProducts = [...allProducts];
+      applyFilters();
     }
-  });
-}
-</script>
+
+    // Filter & sort
+    function applyFilters() {
+      const category = document.getElementById('categoryFilter').value;
+      const priceRange = document.getElementById('priceFilter').value;
+      const sortBy = document.getElementById('sortFilter').value;
+
+      filteredProducts = [...allProducts];
+
+      if (category) filteredProducts = filteredProducts.filter(p => p.category === category);
+      if (priceRange) {
+        if (priceRange === '0-20000') filteredProducts = filteredProducts.filter(p => p.price <= 20000);
+        else if (priceRange === '20000-50000') filteredProducts = filteredProducts.filter(p => p.price > 20000 && p.price <= 50000);
+        else if (priceRange === '50000+') filteredProducts = filteredProducts.filter(p => p.price > 50000);
+      }
+
+      filteredProducts.sort((a, b) => {
+        switch (sortBy) {
+          case 'price-low': return a.price - b.price;
+          case 'price-high': return b.price - a.price;
+          case 'rating': return b.rating - a.rating;
+          default: return a.name.localeCompare(b.name);
+        }
+      });
+
+      displayProducts();
+    }
+
+    // Render
+    function displayProducts() {
+      const grid = document.getElementById('productGrid');
+      const empty = document.getElementById('emptyState');
+      const count = document.getElementById('resultCount');
+
+      if (!filteredProducts.length) {
+        grid.innerHTML = '';
+        empty.style.display = 'block';
+        count.textContent = '0 produk ditemukan';
+        return;
+      }
+
+      empty.style.display = 'none';
+      count.textContent = `${filteredProducts.length} produk ditemukan`;
+
+      grid.innerHTML = filteredProducts.map(p => {
+        const finalPrice = p.discount ? p.price * (1 - p.discount / 100) : p.price;
+        return `
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card category-card">
+              <img src="../assets/images/${p.image}" class="card-img-top" alt="${p.name}">
+              <div class="card-body">
+                <h6 class="card-title">${p.name}</h6>
+                <span class="badge bg-secondary mb-2">${p.category}</span>
+                <div class="d-flex align-items-center mb-2">
+                  ${p.discount ? `<span class="badge badge-promo me-2">-${p.discount}%</span>` : ''}
+                  <span class="fw-bold text-danger">${formatCurrency(finalPrice)}</span>
+                  ${p.discount ? `<small class="text-muted text-decoration-line-through ms-2">${formatCurrency(p.price)}</small>` : ''}
+                </div>
+                <div class="d-flex align-items-center mb-3">
+                  <span class="text-warning">${'★'.repeat(Math.floor(p.rating))}${'☆'.repeat(5 - Math.floor(p.rating))}</span>
+                  <small class="text-muted ms-1">(${p.rating})</small>
+                </div>
+                <div class="d-grid gap-2 d-md-flex">
+                  <a href="detail-produk.html?id=${p.id}" class="btn btn-primary btn-sm flex-fill"><i class="fas fa-eye me-1"></i>Lihat</a>
+                  <button class="btn btn-outline-success btn-sm flex-fill" onclick="addToCart(${p.id})"><i class="fas fa-cart-plus me-1"></i>Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    // Reset
+    function resetFilters() {
+      document.getElementById('categoryFilter').value = '';
+      document.getElementById('priceFilter').value = '';
+      document.getElementById('sortFilter').value = 'name';
+      applyFilters();
+    }
+
+    // Add to cart
+    function addToCart(id) {
+      const product = allProducts.find(p => p.id === id);
+      if (!product) return;
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const idx = cart.findIndex(i => i.id === id);
+      idx === -1 ? cart.push({ ...product, quantity: 1 }) : cart[idx].quantity++;
+      localStorage.setItem('cart', JSON.stringify(cart));
+      Swal.fire({ icon: 'success', title: 'Berhasil!', text: `${product.name} ditambahkan ke keranjang`, timer: 1500, showConfirmButton: false });
+    }
+
+    // Format Rp
+    const formatCurrency = v => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(v);
+
+    // Init
+    document.addEventListener('DOMContentLoaded', () => {
+      window.darkModeManager = new DarkModeManager();
+      const mobileToggle = document.getElementById('darkModeToggleMobile');
+      if (mobileToggle) {
+        mobileToggle.addEventListener('click', () => {
+          window.darkModeManager.toggleTheme();
+        });
+      }
+      loadProducts();
+      ['categoryFilter', 'priceFilter', 'sortFilter'].forEach(id =>
+        document.getElementById(id).addEventListener('change', applyFilters)
+      );
+    });
+  </script>
+
+  <!-- Offcanvas Menu (Mobile) -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasMenu">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Menu</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="../index.html">
+            <i class="fas fa-home"></i> Beranda
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="kategori.html">
+            <i class="fas fa-tags"></i> Kategori
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="promo.html">
+            <i class="fas fa-gift"></i> Promo
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="cart.html">
+            <i class="fas fa-shopping-cart"></i> Keranjang
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="checkout.html">
+            <i class="fas fa-credit-card"></i> Checkout
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="search.html">
+            <i class="fas fa-search"></i> Cari
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="tentang.html">
+            <i class="fas fa-info-circle"></i> Tentang Kami
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="kontak.html">
+            <i class="fas fa-envelope"></i> Kontak
+          </a>
+        </li>
+      </ul>
+
+      <!-- Dark Mode Toggle (Mobile) -->
+      <button id="darkModeToggleMobile" class="btn btn-outline-secondary w-100 mt-3">
+        <i class="fas fa-adjust"></i> Mode
+      </button>
+    </div>
+  </div>
 </body>
 </html>

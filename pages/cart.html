@@ -1,212 +1,338 @@
 <!DOCTYPE html>
 <html lang="id" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Keranjang Belanja - eCustomers</title>
-  <meta name="description" content="Keranjang belanja Anda di eCustomers. Belanja mudah, cepat, dan aman." />
-  
-  <!-- Bootstrap & Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-  
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Custom Styles -->
-  <link href="../assets/css/modern-style.css" rel="stylesheet" />
-  <style>
-    .text-red { color: red; }
-    .hero-section { padding: 2rem 0; }
-    .cart-img { height: 100px; object-fit: cover; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keranjang Belanja - eCustomers</title>
+    <meta name="description" content="Keranjang belanja eCustomers - Toko online modern dengan dark mode">
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/modern-style-comprehensive.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode-complete.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .cart-item {
+            transition: all 0.3s ease;
+            border: 1px solid #dee2e6;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .cart-item:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .empty-cart i {
+            font-size: 4rem;
+            color: #dee2e6;
+            margin-bottom: 20px;
+        }
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .quantity-btn {
+            width: 35px;
+            height: 35px;
+            border: 1px solid #dee2e6;
+            background: white;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .quantity-btn:hover {
+            background: #f8f9fa;
+        }
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+            padding: 0.375rem 0.75rem;
+        }
+        .summary-card {
+            position: sticky;
+            top: 100px;
+        }
+    </style>
 </head>
-<body>
-
-<!-- Modern Navbar -->
-<nav class="navbar navbar-expand-lg navbar-modern sticky-top">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="../index.html">eCustomers</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarSupportedContent">
-      <form class="d-flex ms-auto me-3" role="search">
-        <input class="form-control rounded-pill" type="search" placeholder="Cari produk..." id="searchInput" aria-label="Cari produk">
-      </form>
-      <ul class="navbar-nav mb-2 mb-lg-0 align-items-lg-center">
-        <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="../pages/kategori.html">Kategori</a></li>
-        <li class="nav-item">
-          <a class="nav-link" href="../pages/cart.html">
-            Cart <span id="cartCount" class="badge bg-primary rounded-pill ms-1">0</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<!-- Offcanvas Mobile -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title">eCustomers</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <ul class="navbar-nav">
-      <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
-      <li class="nav-item"><a class="nav-link" href="../pages/kategori.html">Kategori</a></li>
-      <li class="nav-item"><a class="nav-link" href="../pages/cart.html">Cart</a></li>
-    </ul>
-  </div>
-</div>
-
-<!-- Page Header -->
-<section class="hero-section animate-fade-in">
-  <div class="container">
-    <h1 class="hero-title" id="pageTitle">Keranjang Belanja</h1>
-    <p class="hero-subtitle">Keranjang belanja Anda di eCustomers. Belanja mudah, cepat, dan aman.</p>
-  </div>
-</section>
-
-<!-- Main Content -->
-<main class="container py-5">
-  <!-- Cart Summary -->
-  <section class="mb-4">
-    <div class="row">
-      <div class="col-md-8">
-        <h2 class="fw-bold mb-4">Keranjang Belanja</h2>
-        <div id="cartList" class="row g-4"></div>
-      </div>
-      <div class="col-md-4">
-        <h3 class="fw-bold mb-4">Ringkasan Belanja</h3>
-        <div id="cartSummary" class="row g-3"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Empty Cart -->
-  <div id="emptyCart" class="text-center py-5" style="display: none;">
-    <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
-    <h4 class="text-muted">Keranjang belanja kosong</h4>
-    <p class="text-muted">Keranjang belanja Anda kosong. Tambahkan produk untuk melanjutkan.</p>
-    <button class="btn btn-modern" onclick="window.location.href='../pages/kategori.html'">Lihat Semua Produk</button>
-  </div>
-</main>
-
-<!-- Modern Footer -->
-<footer class="footer-modern py-5 mt-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h5 class="fw-bold mb-3">eCustomers</h5>
-        <p class="text-muted">Belanja mudah, cepat, dan aman dengan tampilan modern.</p>
-      </div>
-      <div class="col-md-6">
-        <h6 class="fw-bold mb-3">Quick Links</h6>
-        <ul class="list-unstyled">
-          <li><a href="../pages/tentang.html" class="text-decoration-none text-muted">Tentang Kami</a></li>
-          <li><a href="../pages/kontak.html" class="text-decoration-none text-muted">Kontak</a></li>
-          <li><a href="../pages/promo.html" class="text-decoration-none text-muted">Promo</a></li>
-        </ul>
-      </div>
-    </div>
-    <hr class="my-4">
-    <div class="text-center text-muted">
-      <p>&copy; 2025 eCustomers. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
-
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../assets/js/utils.js"></script>
-<script src="../assets/js/cart.js"></script>
-<script>
-function renderCart() {
-  const container = document.getElementById('cartList');
-  const emptyCart = document.getElementById('emptyCart');
-  const cartSummary = document.getElementById('cartSummary');
-  
-  const cartItems = window.cartManager.getCartItems();
-  
-  if (cartItems.length === 0) {
-    emptyCart.style.display = 'block';
-    container.style.display = 'none';
-    cartSummary.style.display = 'none';
-    return;
-  }
-  
-  emptyCart.style.display = 'none';
-  container.style.display = 'flex';
-  cartSummary.style.display = 'block';
-  
-  container.innerHTML = '';
-  cartItems.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'col-12 mb-3';
-    
-    const price = item.promo && item.discount > 0 
-      ? Math.round(item.price * (1 - item.discount / 100))
-      : item.price;
-    
-    card.innerHTML = `
-      <div class="card-modern">
-        <div class="row g-0 align-items-center">
-          <div class="col-md-2">
-            <img src="../assets/images/${item.image}" 
-                 class="img-fluid rounded-start cart-img" 
-                 alt="${item.name}">
-          </div>
-          <div class="col-md-6">
-            <div class="card-body">
-              <h5 class="card-title">${item.name}</h5>
-              <p class="text-muted small mb-1">${item.category}</p>
-              <p class="mb-0"><strong>${Utils.formatPrice(price)}</strong></p>
+<body class="bg-body">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-modern sticky-top bg-white border-bottom">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">
+                <i class="fas fa-arrow-left me-2"></i>eCustomers
+            </a>
+            
+            <div class="ms-auto">
+                <button id="themeToggle" class="btn btn-outline-secondary btn-sm" title="Toggle dark/light mode">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
-          </div>
-          <div class="col-md-2">
-            <div class="input-group input-group-sm">
-              <button class="btn btn-outline-secondary" type="button" aria-label="Kurangi jumlah" onclick="updateQuantity(${item.id}, ${item.quantity - 1})">
-                <i class="fas fa-minus"></i>
-              </button>
-              <input type="number" class="form-control text-center" value="${item.quantity}" min="1" max="99" 
-                     onchange="updateQuantity(${item.id}, parseInt(this.value))" aria-label="Jumlah produk">
-              <button class="btn btn-outline-secondary" type="button" aria-label="Tambah jumlah" onclick="updateQuantity(${item.id}, ${item.quantity + 1})">
-                <i class="fas fa-plus"></i>
-              </button>
-            </div>
-          </div>
-          <div class="col-md-2 text-end">
-            <button class="btn btn-danger btn-sm" title="Hapus dari keranjang" aria-label="Hapus dari keranjang" onclick="removeFromCart(${item.id})">
-              <i class="fas fa-trash" aria-hidden="true"></i>
-            </button>
-          </div>
         </div>
-      </div>
-    `;
-    container.appendChild(card);
-  });
-  
-  const total = window.cartManager.getTotal();
-  cartSummary.innerHTML = `
-    <div class="card-modern">
-      <div class="card-body">
-        <h5 class="fw-bold mb-3">Ringkasan Belanja</h5>
-        <div class="d-flex justify-content-between mb-2">
-          <span>Total (${cartItems.length} item):</span>
-          <span class="fw-bold">${Utils.formatPrice(total)}</span>
-        </div>
-        <button class="btn btn-whatsapp btn-lg w-100" aria-label="Checkout via WhatsApp" onclick="checkoutCart()">
-          <i class="fab fa-whatsapp"></i> Checkout via WhatsApp
-        </button>
-      </div>
-    </div>
-  `;
-}
+    </nav>
 
-document.addEventListener('DOMContentLoaded', renderCart);
-</script>
+    <!-- Cart Section -->
+    <section class="py-5" style="margin-top: 80px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2 class="mb-4">
+                        <i class="fas fa-shopping-cart me-2"></i>Keranjang Belanja
+                        <span class="badge bg-primary ms-2" id="itemCount">0</span>
+                    </h2>
+                    
+                    <div id="cartItems">
+                        <!-- Cart items will be loaded here -->
+                    </div>
+                    
+                    <div id="emptyCart" class="empty-cart" style="display: none;">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h4 class="text-muted">Keranjangmu masih kosong</h4>
+                        <p class="text-muted">Yuk, mulai belanja sekarang!</p>
+                        <a href="../index.html#products" class="btn btn-primary">
+                            <i class="fas fa-arrow-left me-2"></i>Lanjut Belanja
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="card shadow-sm summary-card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Ringkasan Belanja</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Subtotal</span>
+                                <span id="subtotal">Rp 0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Ongkir</span>
+                                <span id="shipping">Rp 0</span>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between fw-bold mb-3">
+                                <span>Total</span>
+                                <span id="total">Rp 0</span>
+                            </div>
+                            
+                            <button class="btn btn-success w-100 mb-2" onclick="checkoutWhatsApp()">
+                                <i class="fab fa-whatsapp me-2"></i>Beli via WhatsApp
+                            </button>
+                            <button class="btn btn-outline-secondary w-100" onclick="clearCart()">
+                                <i class="fas fa-trash me-2"></i>Kosongkan Keranjang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-modern mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold mb-3">eCustomers</h5>
+                    <p class="text-light">Toko online modern dengan berbagai produk berkualitas. Belanja mudah, cepat, dan aman.</p>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="fw-bold mb-3">Halaman</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="tentang.html">Tentang</a></li>
+                        <li><a href="kontak.html">Kontak</a></li>
+                        <li><a href="promo.html">Promo</a></li>
+                        <li><a href="kategori.html">Kategori</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 eCustomers. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!-- Custom JS -->
+    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/dark-mode-complete.js"></script>
+    
+    <script>
+        // Load cart on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            displayCart();
+            updateCartCount();
+        });
+
+        function displayCart() {
+            const cart = getCart();
+            const cartItems = document.getElementById('cartItems');
+            const emptyCart = document.getElementById('emptyCart');
+            const itemCount = document.getElementById('itemCount');
+            
+            if (cart.length === 0) {
+                cartItems.style.display = 'none';
+                emptyCart.style.display = 'block';
+                itemCount.textContent = '0';
+                updateSummary(0);
+                return;
+            }
+            
+            cartItems.style.display = 'block';
+            emptyCart.style.display = 'none';
+            itemCount.textContent = cart.length;
+            
+            let cartHTML = '';
+            let subtotal = 0;
+            
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                
+                cartHTML += `
+                    <div class="card mb-3 cart-item">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md-2">
+                                    <img src="../assets/images/${item.image}" alt="${item.name}" 
+                                         class="img-fluid rounded" style="height: 80px; object-fit: cover;">
+                                </div>
+                                <div class="col-md-4">
+                                    <h6 class="mb-1">${item.name}</h6>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="quantity-controls">
+                                        <button class="quantity-btn" onclick="updateQuantity(${index}, ${item.quantity - 1})">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <input type="number" class="quantity-input" value="${item.quantity}" 
+                                               onchange="updateQuantity(${index}, this.value)" min="1">
+                                        <button class="quantity-btn" onclick="updateQuantity(${index}, ${item.quantity + 1})">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <h6 class="mb-0">${formatCurrency(itemTotal)}</h6>
+                                </div>
+                                <div class="col-md-1">
+                                    <button class="btn btn-sm btn-outline-danger" onclick="removeFromCart(${index})">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            cartItems.innerHTML = cartHTML;
+            updateSummary(subtotal);
+        }
+
+        function updateQuantity(index, newQuantity) {
+            newQuantity = parseInt(newQuantity);
+            if (newQuantity < 1) {
+                removeFromCart(index);
+                return;
+            }
+            
+            const cart = getCart();
+            cart[index].quantity = newQuantity;
+            saveCart(cart);
+            displayCart();
+            updateCartCount();
+        }
+
+        function removeFromCart(index) {
+            const cart = getCart();
+            cart.splice(index, 1);
+            saveCart(cart);
+            displayCart();
+            updateCartCount();
+        }
+
+        function clearCart() {
+            localStorage.removeItem('cart');
+            displayCart();
+            updateCartCount();
+        }
+
+        function updateSummary(subtotal) {
+            const shipping = subtotal > 200000 ? 0 : 15000;
+            const total = subtotal + shipping;
+            
+            document.getElementById('subtotal').textContent = formatCurrency(subtotal);
+            document.getElementById('shipping').textContent = formatCurrency(shipping);
+            document.getElementById('total').textContent = formatCurrency(total);
+        }
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('id-ID', { 
+                style: 'currency', 
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            }).format(amount);
+        }
+
+        function getCart() {
+            return JSON.parse(localStorage.getItem('cart')) || [];
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function updateCartCount() {
+            const cart = getCart();
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('itemCount').textContent = count;
+        }
+
+        function checkoutWhatsApp() {
+            const cart = getCart();
+            if (cart.length === 0) {
+                alert('Keranjang kosong');
+                return;
+            }
+
+            let message = 'Halo, saya ingin membeli:\n\n';
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                message += `${index + 1}. ${item.name} (${item.quantity}x) - ${formatCurrency(itemTotal)}\n`;
+            });
+            
+            const shipping = total > 200000 ? 0 : 15000;
+            total += shipping;
+            
+            message += `\nOngkir: ${formatCurrency(shipping)}`;
+            message += `\nTotal: ${formatCurrency(total)}`;
+            
+            const whatsappUrl = `https://wa.me/6281234567890?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
 </body>
 </html>

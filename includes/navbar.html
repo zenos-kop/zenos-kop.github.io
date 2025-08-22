@@ -1,44 +1,55 @@
-
-<nav class="navbar navbar-expand-lg sticky-top bg-white border-bottom">
+<nav class="navbar navbar-expand-lg navbar-modern sticky-top bg-white border-bottom">
   <div class="container">
     <a class="navbar-brand fw-bold" href="index.html">eCustomers</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
     <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarSupportedContent">
-      <form class="d-flex ms-auto me-3" role="search" action="pages/produk.html">
+      <form class="d-flex ms-auto me-3" role="search" action="pages/kategori.html">
         <input class="form-control" type="search" placeholder="Cari produk..." name="q">
       </form>
       <ul class="navbar-nav mb-2 mb-lg-0 align-items-lg-center">
         <li class="nav-item"><a class="nav-link" href="pages/promo.html">Promo</a></li>
         <li class="nav-item"><a class="nav-link" href="pages/kategori.html">Kategori</a></li>
-        <li class="nav-item"><a class="nav-link" href="pages/cart.html"><i class="fa-solid fa-cart-shopping"></i> Cart <span id="cartCount" class="badge text-bg-dark">0</span></a></li>
-        <li class="nav-item"><a class="nav-link" href="pages/import.html"><i class="fa-solid fa-file-import"></i> Import</a></li>
+        <li class="nav-item">
+          <a class="nav-link" href="pages/cart.html">
+            <i class="fas fa-shopping-cart"></i> Cart 
+            <span id="cartCount" class="badge text-bg-dark">0</span>
+          </a>
+        </li>
         <li class="nav-item ms-2">
-          <button id="themeToggle" class="btn btn-outline-secondary btn-sm">Dark/Light</button>
+          <button id="themeToggle" class="btn btn-outline-secondary btn-sm" title="Toggle dark/light mode">
+            <i class="fas fa-moon"></i>
+          </button>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- Offcanvas Mobile -->
+<!-- Offcanvas Mobile Menu -->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title">eCustomers</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
   </div>
   <div class="offcanvas-body">
-    <form class="d-flex mb-3" action="pages/produk.html">
+    <form class="d-flex mb-3" action="pages/kategori.html">
       <input class="form-control" type="search" placeholder="Cari produk..." name="q">
     </form>
     <ul class="navbar-nav">
       <li class="nav-item"><a class="nav-link" href="pages/promo.html">Promo</a></li>
       <li class="nav-item"><a class="nav-link" href="pages/kategori.html">Kategori</a></li>
-      <li class="nav-item"><a class="nav-link" href="pages/cart.html">Cart <span id="cartCountMobile" class="badge text-bg-dark">0</span></a></li>
-      <li class="nav-item"><a class="nav-link" href="pages/import.html">Import</a></li>
+      <li class="nav-item">
+        <a class="nav-link" href="pages/cart.html">
+          Cart <span id="cartCountMobile" class="badge text-bg-dark">0</span>
+        </a>
+      </li>
       <li class="nav-item mt-3">
-        <button id="themeToggleMobile" class="btn btn-outline-secondary w-100">Dark/Light</button>
+        <button id="themeToggleMobile" class="btn btn-outline-secondary w-100">
+          <i class="fas fa-adjust"></i> Mode
+        </button>
       </li>
     </ul>
   </div>

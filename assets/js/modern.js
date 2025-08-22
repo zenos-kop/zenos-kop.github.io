@@ -1,6 +1,6 @@
 // Modern eCustomers JavaScript
 const CONFIG = {
-  whatsappNumber: '6281234567890', // Ganti dengan nomor WhatsApp Anda
+  whatsappNumber: '6283172673414', // Ganti dengan nomor WhatsApp Anda
   businessName: 'eCustomers',
   currency: 'Rp'
 };
